@@ -17,14 +17,34 @@ function calculateSalary(salarioFixo, valorVendas){
 
 console.log(calculateSalary(1200,3000))
 
-function cashMachine(valorSaque,salarioFixo,valorVendas ){
-    let salario = calculateSalary(salarioFixo,valorVendas)
+function calculaNotas(troco){
+    var notas = [200,100,50,10,5,1];
+    var texto = '';
+    for(var x=0; x < notas.length; x++){
+       if(troco >= notas[x]){
+          var div = troco/notas[x];
+          texto += div + " notas de "+notas[x]+"\n";
+          troco -= div*notas[x];
+       }
+       
+    }
+    return texto;
+}
+console.log(calculaNotas(500))
 
-    let saldoFinal = salario - valorSaque
+function calculateStock(atual,maxima,minima){
+    let media = (maxima + minima)/2
+    if(atual >= media){
+        return 'não efetuar compra'
+    }
+    else{
+        return 'efetuar compra'
+    }
 
-    
+}
+    console.log(calculateStock(5,50,20))
 
-    return saldoFinal
+function calculateAge(nascimento,atual){
+
 }
 
-console.log(cashMachine(500,1200,800))
