@@ -17,20 +17,27 @@ function calculateSalary(salarioFixo, valorVendas){
 
 console.log(calculateSalary(1200,3000))
 
-function calculaNotas(troco){
-    var notas = [200,100,50,10,5,1];
-    var texto = '';
-    for(var x=0; x < notas.length; x++){
-       if(troco >= notas[x]){
-          var div = troco/notas[x];
-          texto += div + " notas de "+notas[x]+"\n";
-          troco -= div*notas[x];
-       }
-       
-    }
-    return texto;
+function cashMachine(saque,salario,valorVendas){
+    let salarioTotal = calculateSalary(salario,valorVendas)
+    let sobra = salarioTotal - saque
+
+        let notas = [100,50,10,5,2];
+        let totalNotas = '';
+        for(let i = 0; i < notas.length; i++){
+           if(saque >= notas[i]){
+    
+              let div = saque/notas[i];
+              totalNotas += `${div} notas de ${notas[i]}`;
+              saque -= div*notas[i];
+           }
+           
+        }
+        return `Notas sacadas ${totalNotas} saldo atual ${sobra}`;
 }
-console.log(calculaNotas(500))
+    console.log(cashMachine(500,1200,3000))
+
+
+
 
 function calculateStock(atual,maxima,minima){
     let media = (maxima + minima)/2
@@ -44,7 +51,33 @@ function calculateStock(atual,maxima,minima){
 }
     console.log(calculateStock(5,50,20))
 
-function calculateAge(nascimento,atual){
 
+
+function calculateAge(nascimento,atual){
+let anos = atual - nascimento
+let meses = (atual - nascimento) *12
+let dias = (atual-nascimento) *365 
+
+return `tem ${anos} anos / ${meses} meses / ${dias} dias`
 }
+
+console.log(calculateAge(1998,2022))
+
+function getDiagonal(matriz){
+    let diagonal = [];
+    let contador = 0;
+    for(let i = 0; i < matriz.length; i++){
+       diagonal.push(matriz[i][contador])
+       contador += 1
+    }
+    return diagonal 
+}
+
+
+let arr = [[1,2,3],
+              [4,5,6],
+              [7,8,9]]
+
+
+console.log(getDiagonal(arr))
 
